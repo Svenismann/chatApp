@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewControllerLoggedIn: UIViewController {
+    
+    var nsUserDefaults = systemVars.userUid
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if FIRAuth.auth() != nil {
+            print("hello again")
+        }
+        
+        print("user uid \(nsUserDefaults)")
 
         // Do any additional setup after loading the view.
     }
@@ -31,5 +40,16 @@ class ViewControllerLoggedIn: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func btnLogOut(sender: AnyObject) {
+        do {
+            try! FIRAuth.auth()?.signOut()
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("storyboardLogIn") as! ViewControllerLogIn
+            self.showViewController(vc, sender: vc)
+            
+            systemVars.loggedInStatus = false
+            
+            print("logged in : \(systemVars.loggedInStatus)")
+        }
+    }
 
 }

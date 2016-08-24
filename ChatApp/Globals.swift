@@ -12,8 +12,14 @@ import FirebaseDatabase
 
 var BASE_URL = FIRDatabase.database().reference()
 
+var userDefaults = NSUserDefaults.standardUserDefaults()
 
 struct systemVars {
+    
+    static var userUid = userDefaults.objectForKey("userUid")
+    
+    static var loggedInStatus = Bool()
+    
     
     
     

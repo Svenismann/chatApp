@@ -12,6 +12,7 @@ import Firebase
 
 class ViewControllerLogIn: UIViewController {
     
+    var userDefaults = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -56,6 +57,16 @@ class ViewControllerLogIn: UIViewController {
                 
                 let vc = self.storyboard?.instantiateViewControllerWithIdentifier("storyboardLoggedIn") as! ViewControllerLoggedIn
                 self.showViewController(vc, sender: vc)
+                let currentUser = FIRAuth.auth()?.currentUser?.uid
+                print(currentUser)
+                
+                self.userDefaults.setObject(currentUser, forKey: "userUid")
+                
+                systemVars.loggedInStatus = true
+                
+                print("logged in : \(systemVars.loggedInStatus)")
+                
+                
                 
             }
             
