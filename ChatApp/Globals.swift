@@ -10,13 +10,17 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
-var BASE_URL = FIRDatabase.database().reference()
 
-var userDefaults = NSUserDefaults.standardUserDefaults()
+var rootRef = FIRDatabase.database().reference()
+var BASE_URL = String(describing: FIRDatabase.database().reference())
+
+var userDefaults = UserDefaults.standard
 
 struct systemVars {
     
-    static var userUid = userDefaults.objectForKey("userUid")
+    
+    
+    static var userUid = String(describing: userDefaults.object(forKey: "userUid"))
     
     static var loggedInStatus = Bool()
     

@@ -9,6 +9,7 @@ target 'ChatApp' do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'JSQMessagesViewController'
+    
 
   # Pods for ChatApp
 

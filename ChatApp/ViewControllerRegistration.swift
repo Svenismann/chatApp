@@ -9,9 +9,14 @@
 import UIKit
 import Firebase
 
-class ViewControllerRegistration: UIViewController {
 
+class ViewControllerRegistration: UIViewController {
+    
+    
+
+    @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var retypeEmail: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
     
@@ -41,18 +46,40 @@ class ViewControllerRegistration: UIViewController {
     }
     */
 
-    @IBAction func btnRegistration(sender: AnyObject) {
+    @IBAction func btnRegistration(_ sender: AnyObject) {
         
-        email = emailTextField.text!
         
-        if passwordTextField.text == retypePasswordTextField.text {
+        
+        if passwordTextField.text == retypePasswordTextField.text && emailTextField.text == retypeEmail.text {
             password = passwordTextField.text!
-            print("password matches")
+            email = emailTextField.text!
+            print("password & email matches")
             
-            FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
+            FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
                 if error != nil {
                     print("error\(error)")
                 } else {
+                    
+                    let user = FIRAuth.auth()?.currentUser
+                    
+                    if let user = user {
+                        let changeRequest = user.profileChangeRequest()
+                        changeRequest.displayName = self.userName.text!
+                        
+                        changeRequest.commitChanges { error in
+                            if let error = error {
+                                print(error)
+                            } else {
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "storyboardLoggedIn") as! ViewControllerLoggedIn
+                                self.show(vc, sender: vc)
+                            }
+                            
+                        }
+                    }
+                    
+                    
+                    
+                    
                     print("registration successful")
                 }
             }
@@ -65,8 +92,8 @@ class ViewControllerRegistration: UIViewController {
     }
     
     
-    @IBAction func btnCancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func btnCancel(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

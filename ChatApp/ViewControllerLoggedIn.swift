@@ -9,18 +9,23 @@
 import UIKit
 import Firebase
 
+
 class ViewControllerLoggedIn: UIViewController {
     
-    var nsUserDefaults = systemVars.userUid
+    var ref = FIRDatabaseReference()
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    var userUid = systemVars.userUid
+    var message = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Chat"
         
-        if FIRAuth.auth() != nil {
-            print("hello again")
-        }
-        
-        print("user uid \(nsUserDefaults)")
+        self.ref = rootRef
+        userStates()
+        print("user : \(userUid)")
 
         // Do any additional setup after loading the view.
     }
@@ -40,11 +45,39 @@ class ViewControllerLoggedIn: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func btnLogOut(sender: AnyObject) {
+    
+    func userStates() {
+        
+        
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            
+            let name = user.displayName
+            let email = user.email
+            let photoUrl = user.photoURL
+            let uid = user.uid
+            
+            userNameLabel.text = name
+            
+            print("user dates : \(name, email, photoUrl, uid)")
+            
+        } else {
+            
+        }
+        
+        
+    }
+    
+    
+    
+
+    
+    
+    @IBAction func btnLogOut(_ sender: AnyObject) {
         do {
             try! FIRAuth.auth()?.signOut()
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("storyboardLogIn") as! ViewControllerLogIn
-            self.showViewController(vc, sender: vc)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "storyboardLogIn") as! ViewControllerLogIn
+            self.show(vc, sender: vc)
             
             systemVars.loggedInStatus = false
             

@@ -12,6 +12,11 @@
 		2670F4F11D6E2146002CD0DA /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670F4F01D6E2146002CD0DA /* Globals.swift */; };
 		2670F4F31D6E401B002CD0DA /* ViewControllerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670F4F21D6E401B002CD0DA /* ViewControllerRegistration.swift */; };
 		2670F4F61D6E5990002CD0DA /* ViewControllerLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670F4F51D6E5990002CD0DA /* ViewControllerLoggedIn.swift */; };
+		2677731F1D7218F0004F8349 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2677731E1D7218F0004F8349 /* SwiftyJSON.swift */; };
+		267773211D7219E9004F8349 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267773201D7219E9004F8349 /* Extensions.swift */; };
+		267773231D723233004F8349 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267773221D723233004F8349 /* DataProvider.swift */; };
+		267773261D724E6E004F8349 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267773251D724E6E004F8349 /* RestApiManager.swift */; };
+		267773281D724E7C004F8349 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267773271D724E7C004F8349 /* Configuration.swift */; };
 		26C283751D6E15BE00B13BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C283741D6E15BE00B13BE0 /* AppDelegate.swift */; };
 		26C283771D6E15BE00B13BE0 /* ViewControllerlogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C283761D6E15BE00B13BE0 /* ViewControllerlogIn.swift */; };
 		26C2837A1D6E15BE00B13BE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C283781D6E15BE00B13BE0 /* Main.storyboard */; };
@@ -25,6 +30,11 @@
 		2670F4F01D6E2146002CD0DA /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		2670F4F21D6E401B002CD0DA /* ViewControllerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRegistration.swift; sourceTree = "<group>"; };
 		2670F4F51D6E5990002CD0DA /* ViewControllerLoggedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLoggedIn.swift; sourceTree = "<group>"; };
+		2677731E1D7218F0004F8349 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		267773201D7219E9004F8349 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		267773221D723233004F8349 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		267773251D724E6E004F8349 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
+		267773271D724E7C004F8349 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		26C283711D6E15BE00B13BE0 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C283741D6E15BE00B13BE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C283761D6E15BE00B13BE0 /* ViewControllerlogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerlogIn.swift; sourceTree = "<group>"; };
@@ -58,11 +68,27 @@
 				2670F4F21D6E401B002CD0DA /* ViewControllerRegistration.swift */,
 			);
 			name = ViewControllers;
+			path = ChatApp;
+			sourceTree = "<group>";
+		};
+		267773241D72323C004F8349 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				267773251D724E6E004F8349 /* RestApiManager.swift */,
+				267773271D724E7C004F8349 /* Configuration.swift */,
+				267773221D723233004F8349 /* DataProvider.swift */,
+				2677731E1D7218F0004F8349 /* SwiftyJSON.swift */,
+				267773201D7219E9004F8349 /* Extensions.swift */,
+			);
+			name = Classes;
+			path = ChatApp;
 			sourceTree = "<group>";
 		};
 		26C283681D6E15BE00B13BE0 = {
 			isa = PBXGroup;
 			children = (
+				267773241D72323C004F8349 /* Classes */,
+				2670F4F41D6E402B002CD0DA /* ViewControllers */,
 				26C283731D6E15BE00B13BE0 /* ChatApp */,
 				26C283721D6E15BE00B13BE0 /* Products */,
 				B69C0F4F5B3AD9526901D963 /* Pods */,
@@ -84,7 +110,6 @@
 				26C283741D6E15BE00B13BE0 /* AppDelegate.swift */,
 				2670F4F01D6E2146002CD0DA /* Globals.swift */,
 				26C283781D6E15BE00B13BE0 /* Main.storyboard */,
-				2670F4F41D6E402B002CD0DA /* ViewControllers */,
 				26C2837E1D6E15BE00B13BE0 /* Assets.xcassets */,
 				26C283801D6E15BE00B13BE0 /* LaunchScreen.storyboard */,
 				26C283831D6E15BE00B13BE0 /* Info.plist */,
@@ -141,12 +166,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Sven Forstner";
 				TargetAttributes = {
 					26C283701D6E15BE00B13BE0 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 7253U9FQVY;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -238,9 +264,14 @@
 				2670F4F11D6E2146002CD0DA /* Globals.swift in Sources */,
 				2670F4F31D6E401B002CD0DA /* ViewControllerRegistration.swift in Sources */,
 				26C2837D1D6E15BE00B13BE0 /* ChatApp.xcdatamodeld in Sources */,
+				267773211D7219E9004F8349 /* Extensions.swift in Sources */,
 				26C283771D6E15BE00B13BE0 /* ViewControllerlogIn.swift in Sources */,
 				26C283751D6E15BE00B13BE0 /* AppDelegate.swift in Sources */,
+				267773231D723233004F8349 /* DataProvider.swift in Sources */,
+				2677731F1D7218F0004F8349 /* SwiftyJSON.swift in Sources */,
+				267773261D724E6E004F8349 /* RestApiManager.swift in Sources */,
 				2670F4F61D6E5990002CD0DA /* ViewControllerLoggedIn.swift in Sources */,
+				267773281D724E7C004F8349 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +311,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -326,8 +359,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -346,6 +381,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -361,6 +397,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.forstner.ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -374,6 +411,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.forstner.ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

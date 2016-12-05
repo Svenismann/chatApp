@@ -10,9 +10,13 @@ import UIKit
 import Firebase
 
 
+
+
 class ViewControllerLogIn: UIViewController {
     
-    var userDefaults = NSUserDefaults.standardUserDefaults()
+    var userDefaults = UserDefaults.standard
+    
+    var ref = FIRDatabaseReference()
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -20,8 +24,15 @@ class ViewControllerLogIn: UIViewController {
     var username: String = ""
     var password: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(" reference : \(BASE_URL)")
+        
+        self.ref =  rootRef
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,35 +43,35 @@ class ViewControllerLogIn: UIViewController {
         
     }
     
-    @IBAction func btnRegistration(sender: AnyObject) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("storyboardRegistration") as! ViewControllerRegistration
-        self.showViewController(vc, sender: vc)
+    @IBAction func btnRegistration(_ sender: AnyObject) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "storyboardRegistration") as! ViewControllerRegistration
+        self.show(vc, sender: vc)
     
                     
     }
     
-    @IBAction func btnForgetPassword(sender: AnyObject) {
+    @IBAction func btnForgetPassword(_ sender: AnyObject) {
     }
     
-    @IBAction func btnLogInPressed(sender: AnyObject) {
+    @IBAction func btnLogInPressed(_ sender: AnyObject) {
         self.username = self.userNameTextField.text!
         self.password = self.passwordTextField.text!
         print(self.username, self.password)
         
         
-        FIRAuth.auth()?.signInWithEmail(username, password: password) { (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: username, password: password) { (user, error) in
             // ...
             if error != nil {
                 print("there is an Error!\(error)")
             } else {
                 print("logged in")
                 
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("storyboardLoggedIn") as! ViewControllerLoggedIn
-                self.showViewController(vc, sender: vc)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "storyboardLoggedIn") as! ViewControllerLoggedIn
+                self.show(vc, sender: vc)
                 let currentUser = FIRAuth.auth()?.currentUser?.uid
-                print(currentUser)
+                print(currentUser as Any)
                 
-                self.userDefaults.setObject(currentUser, forKey: "userUid")
+                self.userDefaults.set(currentUser, forKey: "userUid")
                 
                 systemVars.loggedInStatus = true
                 
