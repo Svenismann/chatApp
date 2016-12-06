@@ -34,7 +34,7 @@ class RestApiManager: NSObject {
             
             guard err == nil else {
                 print("*** postData Error: \(err)")
-                onCompletion(nil, err!)
+                onCompletion(JSON.null, err!)
                 
                 return
             }
@@ -71,7 +71,7 @@ class RestApiManager: NSObject {
                 onCompletion(json, error as NSError?)
                 return
             } else {
-                onCompletion(nil, error as NSError?)
+                onCompletion(JSON.null, error as NSError?)
                 return
             }
         })
@@ -110,7 +110,7 @@ class RestApiManager: NSObject {
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             guard error == nil else {
                 print("Error makeHTTPPostRequest: \(error)")
-                onCompletion(nil, error as NSError?)
+                onCompletion(JSON.null, error as NSError?)
                 return
             }
             
